@@ -1,6 +1,6 @@
 
 
-# Spring Boot LogFlare (Security Log Demo)
+# Spring Boot LogFlare (Anomaly Detection)
 
 This repository contains a **Spring Boot** project that demonstrates:
 - **Log ingestion** (single or bulk)
@@ -25,15 +25,14 @@ This repository contains a **Spring Boot** project that demonstrates:
     - [Test Case 2: Excessive Firewall Blocks](#test-case-2-excessive-firewall-blocks)
     - [Test Case 3: GeoLocation Anomaly](#test-case-3-geolocation-anomaly)
     - [Test Case 4: Mixed Logs (Multiple Anomalies)](#test-case-4-mixed-logs-multiple-anomalies)
-    - [Bonus: Krutika (3 Fails) + Shubham (2 Success)](#bonus-krutika-3-fails--shubham-2-success)
 - [License](#license)
 
 ---
 
 ## Overview
 
-This application showcases **security-focused logging** in a **microservice** context. It collects logs (e.g., firewall logs, login events), stores them **in memory**, and applies **simple rules** to detect anomalous behavior:
-
+This application showcases **security-focused logging**. It collects logs (e.g., firewall logs, login events), stores them **in memory**, and applies **simple rules** to detect anomalous behavior:
+211
 1. **Repeated Failed Logins**
 2. **Excessive Firewall Blocks**
 3. **GeoLocation Anomalies**
@@ -54,8 +53,8 @@ You can easily expand these rules or integrate with real databases for productio
 
 ## Technologies
 
-- **Java 17+** (though Java 11+ often works as well)
-- **Spring Boot 2.x/3.x** (Web starter)
+- **Java 17+** 
+- **Spring Boot 3.x** (Web starter)
 - **Lombok** (for getters/setters, constructors)
 - **Maven** (for build and dependency management)
 
@@ -158,7 +157,7 @@ Detect repeated failed login attempts for the same user within a short time wind
       "logType": "LOGIN",
       "timestamp": "2025-01-10T12:10:00Z",
       "sourceIP": "192.168.1.60",
-      "username": "Shubham",
+      "username": "Harsh",
       "status": "SUCCESS",
       "message": "First successful login"
     },
@@ -166,12 +165,14 @@ Detect repeated failed login attempts for the same user within a short time wind
       "logType": "LOGIN",
       "timestamp": "2025-01-10T12:11:00Z",
       "sourceIP": "192.168.1.60",
-      "username": "Shubham",
+      "username": "Harsh",
       "status": "SUCCESS",
       "message": "Second successful login"
     }
   ]
 ```
+Anomaly: 
+![img.png](img.png)
 ---
 
 ## Test Case 2: Excessive Firewall Blocks
@@ -219,6 +220,8 @@ Detect multiple consecutive firewall block events from the same `sourceIP`.
   }
 ]
 ```
+Anomaly:
+![img_1.png](img_1.png)
 ---
 
 ## Test Case 3: GeoLocation Anomaly
@@ -240,7 +243,7 @@ Detect events with suspicious or missing geolocation data where `geoLocation = "
   {
     "logType": "LOGIN",
     "timestamp": "2025-01-10T14:01:00Z",
-    "sourceIP": "8.8.8.8",
+    "sourceIP": "8.8.8.9",
     "username": "bob",
     "status": "SUCCESS",
     "geoLocation": "Unknown",
@@ -248,6 +251,8 @@ Detect events with suspicious or missing geolocation data where `geoLocation = "
   }
 ]
 ```
+Anomaly:
+![img_2.png](img_2.png)
 
 ## Test Case 4: Mixed Logs (Multiple Anomalies)
 
@@ -264,21 +269,21 @@ Detect multiple anomalies in a single bulk request, including:
     "logType": "LOGIN",
     "timestamp": "2025-01-10T15:00:00Z",
     "sourceIP": "192.168.1.50",
-    "username": "alice",
+    "username": "Krutika",
     "status": "FAILED"
   },
   {
     "logType": "LOGIN",
     "timestamp": "2025-01-10T15:03:00Z",
     "sourceIP": "192.168.1.50",
-    "username": "alice",
+    "username": "Krutika",
     "status": "FAILED"
   },
   {
     "logType": "LOGIN",
     "timestamp": "2025-01-10T15:09:00Z",
     "sourceIP": "192.168.1.50",
-    "username": "alice",
+    "username": "Krutika",
     "status": "FAILED"
   },
   {
@@ -321,3 +326,6 @@ Detect multiple anomalies in a single bulk request, including:
   }
 ]
 
+```
+Anomaly:
+![img_3.png](img_3.png)
