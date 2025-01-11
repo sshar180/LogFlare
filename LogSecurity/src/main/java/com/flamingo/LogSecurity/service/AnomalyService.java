@@ -29,13 +29,13 @@ public class AnomalyService {
         // Rule 3: GeoLocation-based anomaly
         anomalies.addAll(checkGeoLocationAnomalies(allLogs));
 
-        // Add more rules as needed
+        // <TODO> Add more rules as needed
 
         return anomalies;
     }
 
     /**
-     * Rule: 3+ failed logins for same (username, sourceIP) within 10 minutes.
+     * Rule:3 failed logins for same (username, sourceIP) within 10 minutes.
      */
     private List<AnomalyResult> checkRepeatedFailedLogins(List<UnifiedLog> logs) {
         Map<String, List<Instant>> failMap = new HashMap<>();
@@ -75,7 +75,7 @@ public class AnomalyService {
     }
 
     /**
-     * Rule: If same sourceIP has >= 5 firewall BLOCK actions, flag it.
+     * Rule: If same sourceIP has >= 5 firewall BLOCK actions/ flag it.
      */
     private List<AnomalyResult> checkExcessiveFirewallBlocks(List<UnifiedLog> logs) {
         Map<String, Integer> blockCount = new HashMap<>();
@@ -103,7 +103,7 @@ public class AnomalyService {
     }
 
     /**
-     * Rule: Simple check if geoLocation is "Unknown" (or suspicious).
+     * Rule: Simple check if geoLocation is "Unknown" (or suspicious) .
      */
     private List<AnomalyResult> checkGeoLocationAnomalies(List<UnifiedLog> logs) {
         List<AnomalyResult> results = new ArrayList<>();

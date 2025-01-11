@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnomalyResult {
-    private String type;   // e.g., "RepeatedFailedLogins"
-    private String reason; // e.g., "3+ failed logins within 10 minutes for Krutika|192.168.1.101"
+    // e.g "RepeatedFailedLogins"
+    private String type;
+    // e.g " 3+ failed logins within 10 minutes for Krutika|192.168.1.101"
+    private String reason;
 }

@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * * First Web Service:
+ * */
 @RestController
 @RequestMapping("/api/logs")
 public class LogController {
@@ -19,7 +22,6 @@ public class LogController {
     }
 
     /**
-     * First Web Service:
      * Parse a log entry, store it in memory, and return the unified object.
      */
     @PostMapping("/parse")
@@ -28,7 +30,7 @@ public class LogController {
     }
 
     /**
-     * New endpoint to handle multiple logs at once.
+     *  Endpoint to handle multiple logs at once.
      */
     @PostMapping("/parse/bulk")
     public List<UnifiedLog> parseMultipleLogs(@RequestBody List<UnifiedLog> logs) {
@@ -37,7 +39,7 @@ public class LogController {
     }
 
     /**
-     * 3) Retrieve all stored logs.
+     *  Retrieve all stored logs.
      * Endpoint: GET /api/logs
      */
     @GetMapping

@@ -33,7 +33,7 @@ public class LogService {
     }
 
     /**
-     * Basic normalization logic, e.g., setting defaults if missing.
+     * Basic normalization logic e.g (setting defaults if missing).
      */
     private UnifiedLog normalizeLog(UnifiedLog log) {
         if (log.getSeverity() == null) {
@@ -46,7 +46,7 @@ public class LogService {
     }
 
     /**
-     * Parse & store multiple logs in one go.
+     * Parse and store multiple logs in one go.
      */
     public List<UnifiedLog> parseAndStoreLogs(List<UnifiedLog> logs) {
         List<UnifiedLog> storedLogs = new ArrayList<>();

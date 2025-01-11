@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * Second Web Service:
+ * */
 @RestController
 @RequestMapping("/api/logs")
 public class AnomalyController {
@@ -23,7 +25,6 @@ public class AnomalyController {
     }
 
     /**
-     * Second Web Service:
      * Detect anomalies across the in-memory logs and provide a reason.
      */
     @GetMapping("/anomalies")
