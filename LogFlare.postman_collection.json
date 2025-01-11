@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "dcff2349-7e35-4c0d-8517-25ccf2c5de8b",
+		"name": "LogFlare",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28476355"
+	},
+	"item": [
+		{
+			"name": "Test-Cases",
+			"item": [
+				{
+					"name": "TestCase-1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T12:00:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"Krutika\",\n      \"status\": \"FAILED\",\n      \"message\": \"First failed login\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T12:03:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"Krutika\",\n      \"status\": \"FAILED\",\n      \"message\": \"Second failed login\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T12:09:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"Krutika\",\n      \"status\": \"FAILED\",\n      \"message\": \"Third failed login\"\n    }\n  ]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/logs/parse/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logs",
+								"parse",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TestCase-2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:00:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\",\n      \"message\": \"SSL traffic blocked #1\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:01:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 22,\n      \"action\": \"BLOCK\",\n      \"message\": \"SSH attempt blocked #2\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:02:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 80,\n      \"action\": \"BLOCK\",\n      \"message\": \"HTTP blocked #3\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:03:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 8080,\n      \"action\": \"BLOCK\",\n      \"message\": \"Suspicious request #4\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:04:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\",\n      \"message\": \"SSL traffic blocked #5\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T13:05:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\",\n      \"message\": \"SSL traffic blocked #6\"\n    }\n  ]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/logs/parse/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logs",
+								"parse",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TestCase-3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T14:00:00Z\",\n      \"sourceIP\": \"8.8.8.8\",\n      \"destinationIP\": \"172.16.0.20\",\n      \"port\": 53,\n      \"action\": \"ALLOW\",\n      \"message\": \"DNS request allowed\",\n      \"severity\": \"INFO\",\n      \"deviceId\": \"firewall-02\",\n      \"geoLocation\": \"Unknown\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T14:01:00Z\",\n      \"sourceIP\": \"8.8.8.8\",\n      \"username\": \"bob\",\n      \"status\": \"SUCCESS\",\n      \"message\": \"Login from unusual location\",\n      \"severity\": \"INFO\",\n      \"deviceId\": \"auth-01\",\n      \"geoLocation\": \"Unknown\"\n    }\n  ]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/logs/parse/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logs",
+								"parse",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TestCase-4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T15:00:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"alice\",\n      \"status\": \"FAILED\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T15:01:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"alice\",\n      \"status\": \"FAILED\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T15:09:00Z\",\n      \"sourceIP\": \"192.168.1.50\",\n      \"username\": \"alice\",\n      \"status\": \"FAILED\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T15:02:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T15:03:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T15:04:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T15:05:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\"\n    },\n    {\n      \"logType\": \"FIREWALL\",\n      \"timestamp\": \"2025-01-10T15:06:00Z\",\n      \"sourceIP\": \"10.0.0.5\",\n      \"destinationIP\": \"172.16.0.10\",\n      \"port\": 443,\n      \"action\": \"BLOCK\"\n    },\n    {\n      \"logType\": \"LOGIN\",\n      \"timestamp\": \"2025-01-10T15:07:00Z\",\n      \"sourceIP\": \"8.8.8.8\",\n      \"username\": \"bob\",\n      \"status\": \"FAILED\",\n      \"geoLocation\": \"Unknown\"\n    }\n  ]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/logs/parse/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logs",
+								"parse",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parse-Log",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"logType\": \"LOGIN\",\n    \"timestamp\": \"2025-01-10T12:00:00Z\",\n    \"sourceIP\": \"192.168.1.50\",\n    \"username\": \"alice\",\n    \"status\": \"FAILED\",\n    \"message\": \"Testing single log ingestion\",\n    \"severity\": \"WARNING\",\n    \"deviceId\": \"auth-server-01\"\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/logs/parse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"logs",
+						"parse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Parse-Logs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:00:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  },\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:01:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  },\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:02:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  },\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:03:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  },\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:04:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  },\n  {\n    \"logType\": \"FIREWALL\",\n    \"timestamp\": \"2025-01-10T13:05:00Z\",\n    \"sourceIP\": \"10.0.0.5\",\n    \"action\": \"BLOCK\"\n  }\n]\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/logs/parse/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"logs",
+						"parse",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-All-Logs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/logs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"logs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Anomalies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/logs/anomalies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"logs",
+						"anomalies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
